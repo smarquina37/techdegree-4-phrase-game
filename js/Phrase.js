@@ -29,20 +29,24 @@ class Phrase {
 * @param (string) letter - Letter to check
 */
 checkLetter(letter) {
-  // if (selected letter === this.phrase.includes(letter)) {
-  //   showMatchedLetter()?;
- // } else {
-    //lose heart/point?
+if (this.phrase.includes(letter)) {
+  return true;
+} else {
+  return false;
+}
   }
 
 /**
 * Displays passed letter on screen after a match is found
 * @param (string) letter - Letter to display
 */
-// showMatchedLetter(letter) {
-  // document.getElementByClassName('letter');
-  //li.classList.remove('hide');
-  //li.classList.add('show');
-  //
-// };
+showMatchedLetter(letter) {
+  const matchingLetter = document.getElementByClassName('letter');
+  for (let i = 0; i < matchingLetter.length; i++) {
+    matchingLetter[i].classList.remove('hide');
+    matchingLetter[i].classList.add('show');
+  }
+  
+  
+};
 };
