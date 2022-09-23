@@ -2,24 +2,14 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = [
-      {phrase: 'work hard dream big'},
-      {phrase: 'success looks good on you'},
-      {phrase: 'you can do hard things'},
-      {phrase: 'no pressure no diamonds'},
-      {phrase: 'Tap into your magic'}
+      new Phrase('work hard dream big'),
+      new Phrase('you can and you will'),
+      new Phrase('you can do hard things'),
+      new Phrase('no pressure no diamonds'),
+      new Phrase('Tap into your magic')
   ];
     this.activePhrase = null;
-  }
-
-  /*
-  * Starts game by selecting a random phrasse and displaying it
-  */
-  startGame() {
-    const screenOverlay = document.getElementById('overlay');
-    screenOverlay.style.display = "none";
-    this.activePhrase = this.getRandomPhrase();
-    this.activePhrase.addPhraseToDisplay();
-  }
+  };
 
   /** 
   * Randomly retrieves a phrase from phrases property
@@ -29,7 +19,16 @@ class Game {
   getRandomPhrase() {
     let randomIndex = Math.floor(Math.random() * this.phrases.length);
       const randomPhrase = this.phrases[randomIndex];
-      return randomPhrase
+      return randomPhrase;
+  }
+
+    /*
+  * Starts game by selecting a random phrasse and displaying it
+  */
+  startGame() {
+    document.getElementById('overlay').style.display = "none";
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay();
   }
 
   /*
@@ -38,5 +37,30 @@ class Game {
 //  handleInteraction() {
 
 //  }
-  
+
+
+/**
+* Checks for winning move
+* @return {boolean} True if game has been won, false if game wasn't won
+*/
+// checkForWin() {
+
+// };
+
+/**
+* Increases the value of the missed property
+* Removes a life from the scoreboard
+* Checks if player has remaining lives and ends game if player is out
+*/
+// removeLife() {
+
+// };
+
+/**
+* Displays game over message
+* @param {boolean} gameWon - Whether or not the user won the game
+*/
+// gameOver(gameWon) {
+
+// };
 }
