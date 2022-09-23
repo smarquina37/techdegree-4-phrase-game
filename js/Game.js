@@ -12,12 +12,14 @@ class Game {
   }
 
   /*
-  * Starts game
+  * Starts game by selecting a random phrasse and displaying it
   */
-  // startGame() {
-  //   getRandomPhrase();
-  //   this.activePhrase.addPhraseToDisplay();
-  // }
+  startGame() {
+    const screenOverlay = document.getElementById('overlay');
+    screenOverlay.style.display = "none";
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay();
+  }
 
   /** 
   * Randomly retrieves a phrase from phrases property
@@ -26,7 +28,8 @@ class Game {
 
   getRandomPhrase() {
     let randomIndex = Math.floor(Math.random() * this.phrases.length);
-      return this.phrases[randomIndex];
+      const randomPhrase = this.phrases[randomIndex];
+      return randomPhrase
   }
 
   /*
