@@ -31,10 +31,6 @@ class Game {
     this.activePhrase.addPhraseToDisplay();
   }
 
-  /*
-  * Checks to see if button clicked by the player matches letter in the phrase
-  */
-
  //1. Disable the selected letter’s onscreen keyboard button.
  //2. If the phrase does not include the guessed letter, add the `wrong` CSS class to the
  //selected letter's keyboard button and call the `removeLife()` method.
@@ -45,22 +41,16 @@ class Game {
  handleInteraction(e) {
   if (!this.activePhrase.checkLetter(e.innerHTML)) {
    e.classList.add('wrong');
-  //  removeLife();
-  console.log(e.classList);
+   this.removeLife();
+  } else {
+      e.classList.add('chosen');
+      this.activePhrase.showMatchedLetter(e.innerHTML);
+    //   checkForWin()
+    //   if (checkForWin()) {
+    //     gameOver();
+    //   }
   }
-
-  if (this.activePhrase.checkLetter(e.innerHTML)) {
-    e.classList.add('chosen');
-    this.activePhrase.showMatchedLetter(e)
-  //   checkForWin()
-
-  //   if (checkForWin()) {
-  //     gameOver();
-  //   }
-  console.log(e.classList)
   }
- }
-
 
 /**
 * Checks for winning move
@@ -75,10 +65,29 @@ class Game {
 * Removes a life from the scoreboard
 * Checks if player has remaining lives and ends game if player is out
 */
-// removeLife() {
-//   const image = document.querySelector('.tries');
-//   const source = image.src = image.src.replace("images/livesHeart.png", "images/lostHeart.png");
-// };
+
+// This method removes a life from the scoreboard, by replacing
+// one of the `liveHeart.png` images with a `lostHeart.png` image (found in the
+// `images` folder) and increments the `missed` property. If the player has five
+// missed guesses (i.e they're out of lives), then end the game by calling the
+// `gameOver()` method.
+
+removeLife() {
+  this.missed += 1;
+  
+  const lives = document.querySelectorAll('.tries'); 
+  const heart = lives.firstElementChild;
+  
+  for (let i = 0; i < lives.length; i++) {
+    const image = lives[i].firstChild;
+    if (image.src.includes('images/liveHeart.png')) {
+      return image.src = 'images/lostHeart.png';
+    }
+    if (this.missed === 5) {
+      gameOver();
+    }
+  }
+};
 
 /**
 * Displays game over message
