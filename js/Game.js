@@ -34,9 +34,9 @@ class Game {
   /*
   * Checks to see if button clicked by the player matches letter in the phrase
   */
-//  handleInteraction() {
+ handleInteraction(e) {
 
-//  }
+ }
 
 
 /**
@@ -44,7 +44,7 @@ class Game {
 * @return {boolean} True if game has been won, false if game wasn't won
 */
 // checkForWin() {
-
+  
 // };
 
 /**
