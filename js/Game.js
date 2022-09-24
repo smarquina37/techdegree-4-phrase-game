@@ -34,8 +34,31 @@ class Game {
   /*
   * Checks to see if button clicked by the player matches letter in the phrase
   */
- handleInteraction(e) {
 
+ //1. Disable the selected letter’s onscreen keyboard button.
+ //2. If the phrase does not include the guessed letter, add the `wrong` CSS class to the
+ //selected letter's keyboard button and call the `removeLife()` method.
+ //3. If the phrase includes the guessed letter, add the `chosen` CSS class to the selected
+ // letter's keyboard button, call the `showMatchedLetter()` method on the phrase, and
+ // then call the `checkForWin()` method. If the player has won the game, also call the
+ // `gameOver()` method.
+ handleInteraction(e) {
+  if (!this.activePhrase.checkLetter(e.innerHTML)) {
+   e.classList.add('wrong');
+  //  removeLife();
+  console.log(e.classList);
+  }
+
+  if (this.activePhrase.checkLetter(e.innerHTML)) {
+    e.classList.add('chosen');
+    this.activePhrase.showMatchedLetter(e)
+  //   checkForWin()
+
+  //   if (checkForWin()) {
+  //     gameOver();
+  //   }
+  console.log(e.classList)
+  }
  }
 
 

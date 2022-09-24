@@ -23,17 +23,12 @@ class Phrase {
       ul.appendChild(li);
     });
   }
-
 /**
 * Checks if passed letter is in phrase
 * @param (string) letter - Letter to check
 */
 checkLetter(letter) {
-if (this.phrase.includes(letter)) {
-  return true;
-} else {
-  return false;
-}
+return this.phrase.includes(letter);
   }
 
 /**
@@ -41,10 +36,12 @@ if (this.phrase.includes(letter)) {
 * @param (string) letter - Letter to display
 */
 showMatchedLetter(letter) {
-  const matchingLetter = document.getElementByClassName('letter');
+  const matchingLetter = document.querySelectorAll('letter');
   for (let i = 0; i < matchingLetter.length; i++) {
-    matchingLetter[i].classList.remove('hide');
-    matchingLetter[i].classList.add('show');
+    if (matchingLetter === letter){
+      matchingLetter[i].classList.remove('hide');
+      matchingLetter[i].classList.add('show')
+    }
   }
   
   
