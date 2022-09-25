@@ -32,8 +32,8 @@ class Game {
   }
 
  //1. Disable the selected letter’s onscreen keyboard button.
- //2. If the phrase does not include the guessed letter, add the `wrong` CSS class to the
- //selected letter's keyboard button and call the `removeLife()` method.
+ //2. If the phrase does not include the guessed letter, add the `wrong` CSS class 
+ //and call the `removeLife()` method.
  //3. If the phrase includes the guessed letter, add the `chosen` CSS class to the selected
  // letter's keyboard button, call the `showMatchedLetter()` method on the phrase, and
  // then call the `checkForWin()` method. If the player has won the game, also call the
@@ -45,7 +45,6 @@ class Game {
   } else {
       e.classList.add('chosen');
       this.activePhrase.showMatchedLetter(e.innerHTML);
-    //   checkForWin()
       if (this.checkForWin()) {
         this.gameOver(true);
       }
@@ -57,11 +56,18 @@ class Game {
 * @return {boolean} True if game has been won, false if game wasn't won
 */
 
-// this method checks to see if the player has revealed all of the letters in the active phrase
+// Use a DOM selector to target all the 'hide' elements   
+// Check the length of the collection that DOM selector returns  
+// If the length is zero, then there are no more letters with the className 'hide', 
+// so all the letters should be displayed, and the user should have won the game.
 checkForWin() {
-  let win = false;
-
-
+  const hiddenChar = document.getElementsByClassName('hide');
+  const charLength = hiddenChar.length;
+  if (charLength === 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /**
@@ -89,18 +95,12 @@ removeLife() {
 * Displays game over message
 * @param {boolean} gameWon - Whether or not the user won the game
 */
-
-// this method displays the original start screen overlay, 
-//and depending on the outcome of the game, updates theoverlay h1 element with a friendly win or loss message, and 
-// replaces the overlay’s start CSS class with either the win or lose CSS class.
-
   gameOver(gameWon) {
     const startOverlay = document.getElementById('overlay');
     const gameOverMsg = document.getElementById('game-over-message');
-    // this method displays the original start screen overlay, 
+  // display original start screen overlay
     startOverlay.style.display = 'flex';
-  //and depending on the outcome of the game, updates theoverlay h1 element with a friendly win or loss message, and 
-  // replaces the overlay’s start CSS class with either the win or lose CSS class.
+  //updates theoverlay h1 element with a friendly win or loss message and replaces the overlay’s start CSS class with either the win or lose CSS class.
   if (gameWon) {
       startOverlay.classList.remove('class');
       startOverlay.classList.add('win');
