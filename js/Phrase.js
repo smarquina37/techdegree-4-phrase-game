@@ -51,8 +51,3 @@ showMatchedLetter(letter) {
   }
 };
 
-
-// So all that needs to happen in the showMatchedLetter method 
-// is to loop over the this.phrase property, and 
-// if the textContent of the li equals the letter parameter passed to the method,
-//  then you can change the className hide to show.

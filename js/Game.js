@@ -46,9 +46,9 @@ class Game {
       e.classList.add('chosen');
       this.activePhrase.showMatchedLetter(e.innerHTML);
     //   checkForWin()
-    //   if (checkForWin()) {
-    //     gameOver();
-    //   }
+      if (this.checkForWin()) {
+        this.gameOver(true);
+      }
   }
   }
 
@@ -58,11 +58,11 @@ class Game {
 */
 
 // this method checks to see if the player has revealed all of the letters in the active phrase
-// checkForWin() {
-//   let win = false;
+checkForWin() {
+  let win = false;
 
 
-// };
+};
 
 /**
 * Increases the value of the missed property
@@ -79,9 +79,9 @@ removeLife() {
     if (image.src.includes('images/liveHeart.png')) {
       return image.src = 'images/lostHeart.png';
     }
-    // if (this.missed === 5) {
-    //   gameOver();
-    // }
+    if (this.missed === 5) {
+      this.gameOver();
+    }
   }
 };
 
@@ -98,16 +98,17 @@ removeLife() {
     const startOverlay = document.getElementById('overlay');
     const gameOverMsg = document.getElementById('game-over-message');
     // this method displays the original start screen overlay, 
-    startOverlay.style.display = 'block';
+    startOverlay.style.display = 'flex';
   //and depending on the outcome of the game, updates theoverlay h1 element with a friendly win or loss message, and 
-    gameOverMsg.textContent = message;
   // replaces the overlay’s start CSS class with either the win or lose CSS class.
-  if (this.checkForWin()) {
-      startOverlay.getElementById('overlay').classList.remove('class');
-      startOverlay.getElementById('overlay').classList.add('win');
+  if (gameWon) {
+      startOverlay.classList.remove('class');
+      startOverlay.classList.add('win');
+      gameOverMsg.innerHTML = `Congratulations, you won!`
     } else {
-      startOverlay.getElementById('overlay').classList.remove('class');
-      startOverlay.getElementById('overlay').classList.add('lose');
+      startOverlay.classList.remove('class');
+      startOverlay.classList.add('lose');
+      gameOverMsg.innerHTML = `Sorry, you lost!`
     }
   }
 }
