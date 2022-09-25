@@ -56,8 +56,12 @@ class Game {
 * Checks for winning move
 * @return {boolean} True if game has been won, false if game wasn't won
 */
+
+// this method checks to see if the player has revealed all of the letters in the active phrase
 // checkForWin() {
-  
+//   let win = false;
+
+
 // };
 
 /**
@@ -65,27 +69,19 @@ class Game {
 * Removes a life from the scoreboard
 * Checks if player has remaining lives and ends game if player is out
 */
-
-// This method removes a life from the scoreboard, by replacing
-// one of the `liveHeart.png` images with a `lostHeart.png` image (found in the
-// `images` folder) and increments the `missed` property. If the player has five
-// missed guesses (i.e they're out of lives), then end the game by calling the
-// `gameOver()` method.
-
 removeLife() {
   this.missed += 1;
   
   const lives = document.querySelectorAll('.tries'); 
-  const heart = lives.firstElementChild;
   
   for (let i = 0; i < lives.length; i++) {
     const image = lives[i].firstChild;
     if (image.src.includes('images/liveHeart.png')) {
       return image.src = 'images/lostHeart.png';
     }
-    if (this.missed === 5) {
-      gameOver();
-    }
+    // if (this.missed === 5) {
+    //   gameOver();
+    // }
   }
 };
 
@@ -93,7 +89,25 @@ removeLife() {
 * Displays game over message
 * @param {boolean} gameWon - Whether or not the user won the game
 */
-// gameOver(gameWon) {
 
-// };
+// this method displays the original start screen overlay, 
+//and depending on the outcome of the game, updates theoverlay h1 element with a friendly win or loss message, and 
+// replaces the overlay’s start CSS class with either the win or lose CSS class.
+
+  gameOver(gameWon) {
+    const startOverlay = document.getElementById('overlay');
+    const gameOverMsg = document.getElementById('game-over-message');
+    // this method displays the original start screen overlay, 
+    startOverlay.style.display = 'block';
+  //and depending on the outcome of the game, updates theoverlay h1 element with a friendly win or loss message, and 
+    gameOverMsg.textContent = message;
+  // replaces the overlay’s start CSS class with either the win or lose CSS class.
+  if (this.checkForWin()) {
+      startOverlay.getElementById('overlay').classList.remove('class');
+      startOverlay.getElementById('overlay').classList.add('win');
+    } else {
+      startOverlay.getElementById('overlay').classList.remove('class');
+      startOverlay.getElementById('overlay').classList.add('lose');
+    }
+  }
 }
