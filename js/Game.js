@@ -129,7 +129,8 @@ removeLife() {
       keys[i].disabled = false
     }
     
-    //Reset all of the heart images (i.e. the player's lives) in the scoreboard to display the `liveHeart.png` image.
+    // Reset all of the heart images (i.e. the player's lives) in the scoreboard 
+    //to display the `liveHeart.png` image.
     const lives = document.querySelectorAll('.tries');
     for (let i = 0; i < lives.length; i++) {
     const image = lives[i].firstChild;
