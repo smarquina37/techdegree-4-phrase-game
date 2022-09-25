@@ -38,13 +38,14 @@ class Game {
  // letter's keyboard button, call the `showMatchedLetter()` method on the phrase, and
  // then call the `checkForWin()` method. If the player has won the game, also call the
  // `gameOver()` method.
- handleInteraction(e) {
-  if (!this.activePhrase.checkLetter(e.innerHTML)) {
-   e.classList.add('wrong');
+ handleInteraction(button) {
+  button.disabled = true;
+  if (!this.activePhrase.checkLetter(button.innerHTML)) {
+   button.classList.add('wrong');
    this.removeLife();
   } else {
-      e.classList.add('chosen');
-      this.activePhrase.showMatchedLetter(e.innerHTML);
+      button.classList.add('chosen');
+      this.activePhrase.showMatchedLetter(button.innerHTML);
       if (this.checkForWin()) {
         this.gameOver(true);
       }
@@ -110,5 +111,31 @@ removeLife() {
       startOverlay.classList.add('lose');
       gameOverMsg.innerHTML = `Sorry, you lost!`
     }
+  }
+  
+  resetGame() {
+    //Remove all `li` elements from the Phrase `ul` element.
+    const clearUl = document.querySelector('ul');
+    clearUl.innerHTML = '';
+
+    //Enable all of the onscreen keyboard buttons 
+    //and update each to use the `key` CSS class, and not use the `chosen` or `wrong` CSS classes.
+    const keys = document.querySelectorAll('.key');
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].classList.remove('wrong');
+      keys[i].classList.remove('chosen');
+      keys[i].classList.remove('show');
+      keys[i].classList.add('key');
+      keys[i].disabled = false
+    }
+    
+    //Reset all of the heart images (i.e. the player's lives) in the scoreboard to display the `liveHeart.png` image.
+    const lives = document.querySelectorAll('.tries');
+    for (let i = 0; i < lives.length; i++) {
+    const image = lives[i].firstChild;
+    image.src = 'images/liveHeart.png';
+    }
+    
+    this.startGame();
   }
 }

@@ -6,6 +6,7 @@ const qwerty = document.getElementById('qwerty');
 resetBtn.addEventListener('click', (e) => {
   game = new Game();
   game.startGame();
+  game.resetGame();
 })
 
 // https://dmitripavlutin.com/javascript-event-delegation/
