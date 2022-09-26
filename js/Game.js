@@ -103,11 +103,9 @@ removeLife() {
     startOverlay.style.display = 'flex';
   //updates theoverlay h1 element with a friendly win or loss message and replaces the overlay’s start CSS class with either the win or lose CSS class.
   if (gameWon) {
-      startOverlay.classList.remove('class');
       startOverlay.classList.add('win');
       gameOverMsg.innerHTML = `Congratulations, you won!`
     } else {
-      startOverlay.classList.remove('class');
       startOverlay.classList.add('lose');
       gameOverMsg.innerHTML = `Sorry, you lost!`
     }
