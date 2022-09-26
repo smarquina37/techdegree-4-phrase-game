@@ -1,2 +1,3 @@
 # techdegree-4-phrase-game
- 
+
+In this guessing game. In this single player game, a player needs to guess the phrase on the screen by clicking on letters they think are in the words. They will use a virtual keyboard to click on these letters. The game uses HTML, CSS, and JavaScript to run. I learned a lot doing this project. There were a lot less details in the instructions so it forced me to think of what my past lessons had taught me to complete the tasks. It was difficult to do as a beginner but the only way to learn is by doing. I tried to sit and think about how best to complete methods and when I got stuck, I searched online for solutions. Building this game taught me to break down steps into smaller steps and that would help me complete it. This project was stressful, but I enjoyed the learning I experienced by working through it.
